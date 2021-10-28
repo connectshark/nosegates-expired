@@ -76,7 +76,7 @@ export default {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        border: 2px solid $blue;
+        box-shadow: 0 0 0 2px $blue;
         background-color: $yellow;
         a{
           color: $blue;
