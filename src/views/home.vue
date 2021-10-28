@@ -1,5 +1,22 @@
 <template>
-  <img alt="Vue logo" src="../assets/logo.png">
-  <h2>Hi! 快速使用vue3做出網頁template</h2>
-  <p>{{$t('message')}}</p>
+<div class="home">
+  <HeadWrapper/>
+</div>
 </template>
+
+<script>
+import HeadWrapper from '../components/headWrapper.vue'
+export default {
+  components: {
+    HeadWrapper
+  },
+  setup () {
+    return {
+
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+</style>
