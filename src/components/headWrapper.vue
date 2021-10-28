@@ -40,6 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/scss/color.scss';
+@import '../assets/scss/mixin.scss';
 .headWrapper{
   padding: 40px 0 0;
   figure{
@@ -52,12 +53,9 @@ export default {
     }
   }
   h1{
-    font-size: 48px;
-    line-height: 1.5;
     color: $yellow;
-    font-weight: bold;
-    -webkit-text-stroke: 2px $gray;
-    letter-spacing: -2px;
+    @include title;
+    @include stroke (2px);
   }
   h2{
     a{
@@ -78,6 +76,8 @@ export default {
         border-radius: 50%;
         box-shadow: 0 0 0 2px $blue;
         background-color: $yellow;
+        transform: scale(1);
+        transition: transform .3s;
         a{
           color: $blue;
           display: block;
@@ -86,7 +86,9 @@ export default {
             line-height: 40px;
           }
         }
-        
+        &:hover{
+          transform: scale(1.3);
+        }
       }
     }
   }

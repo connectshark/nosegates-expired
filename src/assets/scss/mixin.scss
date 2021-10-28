@@ -1,0 +1,10 @@
+@mixin stroke ($width) {
+  -webkit-text-stroke: $width $gray;
+}
+
+@mixin title {
+  font-size: 48px;
+  line-height: 1.5;
+  font-weight: bold;
+  letter-spacing: -2px;
+}
