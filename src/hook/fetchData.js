@@ -6,8 +6,7 @@ const fetchData = {
     const dataLoading = ref(true)
     fetch( process.env.VUE_APP_API_URL + `/repos/connectshark/linktree-data/contents/${path}?ref=master`, {
       headers: {
-        Accept: 'application/vnd.github.v3.raw',
-        Authorization: process.env.VUE_APP_TOKEN
+        Accept: 'application/vnd.github.v3.raw'
       }
     }).then(res => res.json())
       .then(res => {
