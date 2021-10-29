@@ -1,6 +1,6 @@
 <template>
 <div class="link-item">
-  <a :href="link" class="bottom">
+  <a :href="link" class="bottom" target="_blank">
     <div class="top">
       <h4>{{name}}</h4>
       <i class='bx bxs-caret-right-circle icon'></i>

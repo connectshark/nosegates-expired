@@ -1,8 +1,10 @@
 <template>
 <header class="headWrapper">
-  <figure>
-    <img src="../assets/img/hero.jpg" alt="hero">
-  </figure>
+  <transition name="fade">
+    <figure v-if="!loading">
+      <img src="../assets/img/hero.jpg" alt="hero">
+    </figure>
+  </transition>
   <h1>Nosegates</h1>
   <h2>
     <a href="mailto:bobhus394@gmail.com">bobhus394@gmail.com</a>
@@ -20,9 +22,12 @@
 </template>
 
 <script>
+import load from '../hook/load'
 export default {
   setup () {
+    const { loading } = load.mountLoad()
     return {
+      loading,
       navs: [{
         link: 'https://www.facebook.com/EnTeng.Nose',
         icon: 'bxl-facebook-circle'
@@ -41,6 +46,7 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/scss/color.scss';
 @import '../assets/scss/mixin.scss';
+@import '../assets/scss/animation.scss';
 .headWrapper{
   padding: 40px 0 0;
   figure{
