@@ -1,9 +1,9 @@
 <template>
 <div class="card-item">
-  <a :href="link" class="bottom" target="_blank">
+  <a :href="url" class="bottom" target="_blank">
     <div class="top">
-      <img src="../assets/img/shopee.png" alt="shopee">
-      <h4>{{name}}<i class='bx bx-chevron-right'></i></h4>
+      <img :src="img" :alt="title">
+      <h4>{{title}}<i class='bx bx-chevron-right'></i></h4>
     </div>
   </a>
 </div>
@@ -12,10 +12,13 @@
 <script>
 export default {
   props: {
-    name: {
+    title: {
       type: String
     },
-    link: {
+    url: {
+      type: String
+    },
+    img: {
       type: String
     }
   },

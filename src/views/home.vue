@@ -16,8 +16,9 @@
     <ul class="links">
       <li v-for="card in cards" :key="card.name" class="link">
         <Card
-          :name="card.name"
-          :link="card.link"
+          :title="card.title"
+          :url="card.url"
+          :img="card.img"
         />
       </li>
     </ul>
@@ -31,6 +32,7 @@ import HeadWrapper from '../components/headWrapper.vue'
 import Link from '../components/link.vue'
 import Card from '../components/card.vue'
 import FooterWrapper from '../components/footerWrapper.vue'
+import fetchData from '../hook/fetchData'
 export default {
   components: {
     HeadWrapper,
@@ -39,27 +41,11 @@ export default {
     FooterWrapper
   },
   setup () {
+    const { data: links } = fetchData.get('link.json')
+    const { data: cards } = fetchData.get('utils.json')
     return {
-      links: [
-        {
-          link: 'https://tw.carousell.com/sandralu/',
-          name: '女孩衣櫥飾品二手拍'
-        },
-        {
-          link: 'https://blog.justlikeboss.com/financial/recyclemobile/',
-          name: '舊手機回收資訊'
-        },
-        {
-          link: 'https://www.instagram.com/tossphysio/',
-          name: '辦公室族群的救星'
-        },
-      ],
-      cards: [
-        {
-          name: '蝦皮短網址',
-          link: 'https://shopee.nosegates.com/'
-        }
-      ]
+      links,
+      cards
     }
   }
 }

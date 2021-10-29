@@ -1,8 +1,8 @@
 <template>
 <header class="headWrapper">
   <transition name="fade">
-    <figure v-if="!loading">
-      <img src="../assets/img/hero.jpg" alt="hero">
+    <figure v-show="!loading">
+      <img src="../assets/img/hero.jpg" alt="hero" @dragstart.prevent @load="loadEnd">
     </figure>
   </transition>
   <h1>Nosegates</h1>
@@ -12,7 +12,7 @@
   <nav>
     <ul>
       <li v-for="nav in navs" :key="nav.icon">
-        <a :href="nav.link" target="_blank">
+        <a :href="nav.url" target="_blank">
           <i class='bx' :class="nav.icon"></i>
         </a>
       </li>
@@ -22,22 +22,21 @@
 </template>
 
 <script>
-import load from '../hook/load'
+import { ref } from '@vue/reactivity'
+import fetchData from '../hook/fetchData'
 export default {
   setup () {
-    const { loading } = load.mountLoad()
+    const loading = ref(true)
+    const { data: navs } = fetchData.get('scoial.json')
+
+    const loadEnd = () => {
+      loading.value = false
+    }
+
     return {
       loading,
-      navs: [{
-        link: 'https://www.facebook.com/EnTeng.Nose',
-        icon: 'bxl-facebook-circle'
-      }, {
-        link: 'https://t.me/NoseGates',
-        icon: 'bxl-telegram'
-      }, {
-        link: 'https://www.instagram.com/nose_gates/',
-        icon: 'bxl-instagram'
-      }]
+      navs,
+      loadEnd
     }
   }
 }
