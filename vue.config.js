@@ -3,10 +3,6 @@ module.exports = {
     sourceMap: false
   },
 
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/nosegates/'
-    : '/',
-
   pluginOptions: {
     i18n: {
       locale: 'tw',
