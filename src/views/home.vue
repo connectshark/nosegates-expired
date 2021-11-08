@@ -14,7 +14,7 @@
   <h3>實用工具</h3>
   <section class="utils">
     <ul class="links">
-      <li v-for="card in data.cards" :key="card.name" class="link">
+      <li v-for="card in data.utils" :key="card.name" class="link">
         <Card
           :title="card.title"
           :url="card.url"
