@@ -11,7 +11,7 @@
   </h2>
   <nav>
     <ul>
-      <li v-for="nav in navs" :key="nav.icon">
+      <li v-for="nav in socials" :key="nav.icon">
         <a :href="nav.url" target="_blank">
           <i class='bx' :class="nav.icon"></i>
         </a>
@@ -22,12 +22,15 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
-import fetchData from '../hook/fetchData'
+import { ref } from 'vue'
 export default {
+  props: {
+    socials: {
+      type: Array
+    }
+  },
   setup () {
     const loading = ref(true)
-    const { data: navs } = fetchData.get('scoial.json')
 
     const loadEnd = () => {
       loading.value = false
@@ -35,7 +38,6 @@ export default {
 
     return {
       loading,
-      navs,
       loadEnd
     }
   }

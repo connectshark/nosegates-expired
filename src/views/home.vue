@@ -1,9 +1,9 @@
 <template>
 <div class="home">
-  <HeadWrapper/>
+  <HeadWrapper :socials="data.social"/>
   <section class="link-group">
     <ul class="links">
-      <li class="link" v-for="link in links" :key="link.link">
+      <li class="link" v-for="link in data.links" :key="link.link">
         <Link
           :link="link.link"
           :name="link.name"
@@ -14,7 +14,7 @@
   <h3>實用工具</h3>
   <section class="utils">
     <ul class="links">
-      <li v-for="card in cards" :key="card.name" class="link">
+      <li v-for="card in data.cards" :key="card.name" class="link">
         <Card
           :title="card.title"
           :url="card.url"
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import HeadWrapper from '../components/headWrapper.vue'
 import Link from '../components/link.vue'
 import Card from '../components/card.vue'
@@ -41,10 +42,10 @@ export default {
     FooterWrapper
   },
   setup () {
-    const { data: links } = fetchData.get('link.json')
-    const { data: cards } = fetchData.get('utils.json')
+    const cards = ref([])
+    const { data } = fetchData.get('index.json')
     return {
-      links,
+      data,
       cards
     }
   }
